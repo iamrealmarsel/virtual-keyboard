@@ -1,0 +1,12 @@
+{
+  "ignorePatterns": ["dist", "node_modules", "webpack.*", "config/paths.js"],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended", "airbnb-base", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  }
+}
