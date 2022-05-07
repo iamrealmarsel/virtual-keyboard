@@ -1,0 +1,25 @@
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70px;
+  width: 100%;
+  height: 70px;
+  border: solid 1px rgb(104, 104, 104);
+  box-shadow: 0 0 0 rgba(238, 60, 191, 0);
+  cursor: pointer;
+  // transition: 0.1s box-shadow, 0.3s border;
+
+  &:hover {
+    border: solid 1px rgb(174, 247, 132);
+  }
+
+  &._active {
+    box-shadow: 0 0 10px rgba(238, 60, 191, 0.5);
+  }
+}
+
+.space {
+  max-width: none;
+  flex-grow: 1;
+}

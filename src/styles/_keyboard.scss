@@ -1,0 +1,46 @@
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  width: 100%;
+  max-width: 900px;
+  padding: 15px;
+
+  &__keys {
+    display: flex;
+    row-gap: 15px;
+    column-gap: 15px;
+
+    &_wrap {
+    }
+
+    &_col:nth-child(1) {
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    &_col:nth-child(2) {
+      width: 100%;
+      max-width: 70px;
+    }
+
+    &_col:nth-child(2) .key {
+      height: auto;
+      flex-grow: 1;
+    }
+  }
+
+  &__arrowKeys {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 70px;
+    width: 100%;
+    height: 70px;
+  }
+
+  &__arrowKeys .key {
+    height: auto;
+    margin: 0;
+  }
+}
