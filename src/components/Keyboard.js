@@ -1,4 +1,3 @@
-import keysData from '../keys.json';
 import { createElement } from '../utils';
 import Key from './Key';
 
@@ -9,12 +8,12 @@ const makeLineColHtml = () => `<div class="keyboard__keys keyboard__keys_col"></
 const makeArrowHtml = () => `<div class="keyboard__arrowKeys"></div>`;
 
 class Keyboard {
-  constructor() {
+  constructor({ symbolKeys, digitKeys, metaKeys, letterKeys }) {
     this.keyComponents = {
-      symbolKeys: this.generateKeyComponents(keysData.symbolKeys),
-      digitKeys: this.generateKeyComponents(keysData.digitKeys),
-      metaKeys: this.generateKeyComponents(keysData.metaKeys),
-      letterKeys: this.generateKeyComponents(keysData.letterKeys),
+      symbolKeys: this.generateKeyComponents(symbolKeys),
+      digitKeys: this.generateKeyComponents(digitKeys),
+      metaKeys: this.generateKeyComponents(metaKeys),
+      letterKeys: this.generateKeyComponents(letterKeys),
     };
 
     this.keyComponentsByCode = {
@@ -23,6 +22,14 @@ class Keyboard {
       ...this.keyComponents.metaKeys,
       ...this.keyComponents.letterKeys,
     };
+
+    this.shiftDependentKeyComponents = [
+      ...Object.values(this.keyComponents.letterKeys),
+      ...Object.values(this.keyComponents.digitKeys),
+      ...Object.values(this.keyComponents.symbolKeys),
+    ];
+
+    this.capsLockDependentKeyComponents = [...Object.values(this.keyComponents.letterKeys)];
 
     this.element = this.generateElement();
   }
@@ -119,12 +126,44 @@ class Keyboard {
     return components;
   }
 
-  pressKeydown(code) {
-    this.keyComponentsByCode[code].addActiveClass();
+  setState(state) {
+    this.state = state;
   }
 
-  pressKeyup(code) {
-    this.keyComponentsByCode[code].removeActiveClass();
+  toggleActiveClass(code, toggler) {
+    if (!this.keyComponentsByCode[code]) return;
+
+    const isActive = code === 'CapsLock' ? this.state.capslock : toggler;
+
+    if (isActive) {
+      this.keyComponentsByCode[code].addActiveClass();
+    } else {
+      this.keyComponentsByCode[code].removeActiveClass();
+    }
+  }
+
+  toggleCapsLock() {
+    if (this.state.capslock) {
+      this.capsLockDependentKeyComponents.forEach((item) => {
+        item.showCapsValues();
+      });
+    } else {
+      this.capsLockDependentKeyComponents.forEach((item) => {
+        item.hideCapsValues();
+      });
+    }
+  }
+
+  toggleShift() {
+    if (this.state.leftShift || this.state.rightShift) {
+      this.shiftDependentKeyComponents.forEach((item) => {
+        item.showShiftValues();
+      });
+    } else {
+      this.shiftDependentKeyComponents.forEach((item) => {
+        item.hideShiftValues();
+      });
+    }
   }
 }
 
