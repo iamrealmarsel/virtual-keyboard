@@ -40,20 +40,7 @@ class Output {
     }
   }
 
-  // select(code) {
-  //   console.log('222');
-
-  //   this.selectMode = true;
-  //   if (code === 'ArrowLeft' && this.element.selectionStart !== 0) {
-  //     this.element.selectionStart -= 1;
-  //   }
-
-  //   // this.selectMode = false;
-  // }
-
   navigate(code) {
-    if (this.selectMode) return;
-    console.log(this.selectMode);
     // ЕСЛИ ТЕКСТ НЕ ВЫДЕЛЕН
     if (this.element.selectionStart === this.element.selectionEnd) {
       if (code === 'ArrowLeft' && this.element.selectionStart !== 0) {

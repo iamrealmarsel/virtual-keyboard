@@ -8,13 +8,13 @@ class App {
       capslock: false,
       leftShift: false,
       rightShift: false,
-      lang: 'en',
+      lang: !localStorage.getItem('lang') ? 'en' : localStorage.getItem('lang'),
     };
 
     this.mainElement = document.createElement('main');
     containerElement.append(this.mainElement);
 
-    this.keyboardComponent = new Keyboard(keysData);
+    this.keyboardComponent = new Keyboard(keysData, this.state);
     this.outputComponent = new Output(keysData);
 
     this.keyByCode = {
@@ -23,14 +23,66 @@ class App {
       ...keysData.letterKeys,
       ...keysData.metaKeys,
     };
+
+    this.keyboardElement = this.keyboardComponent.element;
+
+    this.mouseTarget = null;
   }
 
   init() {
     document.addEventListener('keydown', this.keydownHandler.bind(this));
     document.addEventListener('keyup', this.keyupHandler.bind(this));
 
+    this.keyboardElement.addEventListener('mousedown', this.mousedownHandler.bind(this));
+    this.keyboardElement.addEventListener('mouseup', this.mouseupHandler.bind(this));
+
     this.mainElement.append(this.outputComponent.element);
     this.mainElement.append(this.keyboardComponent.element);
+  }
+
+  mousedownHandler(e) {
+    e.preventDefault();
+
+    const codeKey = e.target.dataset.code;
+
+    if (!this.keyByCode[codeKey]) return;
+
+    this.mouseTarget = codeKey;
+
+    if (codeKey === 'CapsLock') {
+      this.state.capslock = !this.state.capslock;
+      this.keyboardComponent.setState(this.state);
+
+      this.keyboardComponent.toggleCapsLock();
+    } else if (codeKey === 'ShiftLeft') {
+      this.state.leftShift = true;
+      this.keyboardComponent.setState(this.state);
+
+      this.keyboardComponent.toggleShift();
+    } else if (codeKey === 'ShiftRight') {
+      this.state.rightShift = true;
+      this.keyboardComponent.setState(this.state);
+
+      this.keyboardComponent.toggleShift();
+    }
+
+    this.outputComponent.setState(this.state);
+    this.outputComponent.update(codeKey);
+    this.keyboardComponent.toggleActiveClass(codeKey, true);
+  }
+
+  mouseupHandler(e) {
+    e.preventDefault();
+
+    if (this.mouseTarget === 'ShiftLeft') {
+      this.state.leftShift = false;
+    } else if (this.mouseTarget === 'ShiftRight') {
+      this.state.rightShift = false;
+    }
+
+    this.keyboardComponent.setState(this.state);
+    this.keyboardComponent.toggleShift();
+    this.keyboardComponent.toggleActiveClass('all', false);
   }
 
   keydownHandler(e) {
@@ -57,9 +109,16 @@ class App {
       this.keyboardComponent.toggleShift();
     } else if (e.ctrlKey && e.altKey) {
       // ... смена языка ...
+      this.state.lang = this.state.lang === 'en' ? 'ru' : 'en';
+      localStorage.setItem('lang', this.state.lang);
+      this.keyboardComponent.setState(this.state);
+
+      this.keyboardComponent.toggleLang();
     }
 
     this.outputComponent.setState(this.state);
+    this.outputComponent.update(codeKey);
+    this.keyboardComponent.toggleActiveClass(codeKey, true);
 
     // if (
     //   e.shiftKey &&
@@ -70,9 +129,6 @@ class App {
     // ) {
     //   this.outputComponent.select(codeKey);
     // }
-
-    this.outputComponent.update(codeKey);
-    this.keyboardComponent.toggleActiveClass(codeKey, true);
 
     // if (
     //   !(codeKey === 'ShiftLeft') &&
@@ -108,8 +164,6 @@ class App {
       this.keyboardComponent.setState(this.state);
 
       this.keyboardComponent.toggleShift();
-    } else if (e.ctrlKey && e.altKey) {
-      // ... смена языка ...
     }
 
     this.keyboardComponent.toggleActiveClass(codeKey, false);

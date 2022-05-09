@@ -8,13 +8,27 @@ const makeLineColHtml = () => `<div class="keyboard__keys keyboard__keys_col"></
 const makeArrowHtml = () => `<div class="keyboard__arrowKeys"></div>`;
 
 class Keyboard {
-  constructor({ symbolKeys, digitKeys, metaKeys, letterKeys }) {
+  constructor({ symbolKeys, digitKeys, metaKeys, letterKeys }, state) {
+    this.state = state;
+
     this.keyComponents = {
       symbolKeys: this.generateKeyComponents(symbolKeys),
       digitKeys: this.generateKeyComponents(digitKeys),
       metaKeys: this.generateKeyComponents(metaKeys),
       letterKeys: this.generateKeyComponents(letterKeys),
     };
+
+    this.keyArrComponents = [
+      ...Object.values(this.keyComponents.letterKeys),
+      ...Object.values(this.keyComponents.digitKeys),
+      ...Object.values(this.keyComponents.symbolKeys),
+      ...Object.values(this.keyComponents.metaKeys).filter(
+        (item) =>
+          item.keyCode !== 'CapsLock' &&
+          item.keyCode !== 'ShiftLeft' &&
+          item.keyCode !== 'ShiftRight'
+      ),
+    ];
 
     this.keyComponentsByCode = {
       ...this.keyComponents.symbolKeys,
@@ -30,6 +44,7 @@ class Keyboard {
     ];
 
     this.capsLockDependentKeyComponents = [...Object.values(this.keyComponents.letterKeys)];
+    // this.capsLockRuDependentKeyComponents = [...Object.values(this.keyComponents.letterKeys)];
 
     this.element = this.generateElement();
   }
@@ -120,7 +135,7 @@ class Keyboard {
     arr.forEach((item) => {
       const keyData = {};
       [keyData.keyCode, keyData.values] = item;
-      components[keyData.keyCode] = new Key(keyData);
+      components[keyData.keyCode] = new Key(keyData, this.state.lang);
     });
 
     return components;
@@ -131,7 +146,10 @@ class Keyboard {
   }
 
   toggleActiveClass(code, toggler) {
-    // if (!this.keyComponentsByCode[code]) return;
+    if (code === 'all') {
+      this.keyArrComponents.forEach((item) => item.removeActiveClass());
+      return;
+    }
 
     const isActive = code === 'CapsLock' ? this.state.capslock : toggler;
 
@@ -145,11 +163,11 @@ class Keyboard {
   toggleCapsLock() {
     if (this.state.capslock) {
       this.capsLockDependentKeyComponents.forEach((item) => {
-        item.showCapsValues();
+        item.showCapsValues(this.state.lang);
       });
     } else {
       this.capsLockDependentKeyComponents.forEach((item) => {
-        item.hideCapsValues();
+        item.hideCapsValues(this.state.lang);
       });
     }
   }
@@ -157,20 +175,36 @@ class Keyboard {
   toggleShift() {
     if (this.state.leftShift || this.state.rightShift) {
       this.shiftDependentKeyComponents.forEach((item) => {
-        item.showShiftValues();
+        item.showShiftValues(this.state.lang);
       });
     } else if (this.state.capslock) {
       this.shiftDependentKeyComponents.forEach((item) => {
-        item.hideShiftValues();
+        item.hideShiftValues(this.state.lang);
       });
       this.capsLockDependentKeyComponents.forEach((item) => {
-        item.showCapsValues();
+        item.showCapsValues(this.state.lang);
       });
     } else {
       this.shiftDependentKeyComponents.forEach((item) => {
-        item.hideShiftValues();
+        item.hideShiftValues(this.state.lang);
       });
     }
+  }
+
+  toggleLang() {
+    let property;
+
+    if (this.state.leftShift || this.state.rightShift) {
+      property = 'shiftKey';
+    } else if (this.state.capslock) {
+      property = 'capsLock';
+    } else {
+      property = 'key';
+    }
+
+    this.shiftDependentKeyComponents.forEach((item) => {
+      item.toggleLang(this.state.lang, property);
+    });
   }
 }
 
