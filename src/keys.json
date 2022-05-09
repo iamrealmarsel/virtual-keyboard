@@ -63,21 +63,25 @@
     "Tab": {
       "en": {
         "key": "&#8677;",
-        "shiftKey": "&#8677;"
+        "shiftKey": "&#8677;",
+        "value": "\t"
       },
       "ru": {
         "key": "&#8677;",
-        "shiftKey": "&#8677;"
+        "shiftKey": "&#8677;",
+        "value": "\t"
       }
     },
     "Enter": {
       "en": {
         "key": "&#11152;",
-        "shiftKey": "&#11152;"
+        "shiftKey": "&#11152;",
+        "value": "\n"
       },
       "ru": {
         "key": "&#11152;",
-        "shiftKey": "&#11152;"
+        "shiftKey": "&#11152;",
+        "value": "\n"
       }
     }
   },
@@ -330,101 +334,121 @@
     "KeyQ": {
       "en": {
         "key": "q",
-        "shiftKey": "Q"
+        "shiftKey": "Q",
+        "capsLock": "Q"
       },
       "ru": {
         "key": "й",
-        "shiftKey": "Й"
+        "shiftKey": "Й",
+        "capsLock": "Й"
       }
     },
     "KeyW": {
       "en": {
         "key": "w",
-        "shiftKey": "W"
+        "shiftKey": "W",
+        "capsLock": "W"
       },
       "ru": {
         "key": "ц",
-        "shiftKey": "Ц"
+        "shiftKey": "Ц",
+        "capsLock": "Ц"
       }
     },
     "KeyE": {
       "en": {
         "key": "e",
-        "shiftKey": "E"
+        "shiftKey": "E",
+        "capsLock": "E"
       },
       "ru": {
         "key": "у",
-        "shiftKey": "У"
+        "shiftKey": "У",
+        "capsLock": "У"
       }
     },
     "KeyR": {
       "en": {
         "key": "r",
-        "shiftKey": "R"
+        "shiftKey": "R",
+        "capsLock": "R"
       },
       "ru": {
         "key": "к",
-        "shiftKey": "К"
+        "shiftKey": "К",
+        "capsLock": "К"
       }
     },
     "KeyT": {
       "en": {
         "key": "t",
-        "shiftKey": "T"
+        "shiftKey": "T",
+        "capsLock": "T"
       },
       "ru": {
         "key": "е",
-        "shiftKey": "Е"
+        "shiftKey": "Е",
+        "capsLock": "Е"
       }
     },
     "KeyY": {
       "en": {
         "key": "y",
-        "shiftKey": "Y"
+        "shiftKey": "Y",
+        "capsLock": "Y"
       },
       "ru": {
         "key": "н",
-        "shiftKey": "Н"
+        "shiftKey": "Н",
+        "capsLock": "Н"
       }
     },
     "KeyU": {
       "en": {
         "key": "u",
-        "shiftKey": "U"
+        "shiftKey": "U",
+        "capsLock": "U"
       },
       "ru": {
         "key": "г",
-        "shiftKey": "Г"
+        "shiftKey": "Г",
+        "capsLock": "Г"
       }
     },
     "KeyI": {
       "en": {
         "key": "i",
-        "shiftKey": "I"
+        "shiftKey": "I",
+        "capsLock": "I"
       },
       "ru": {
         "key": "ш",
-        "shiftKey": "Ш"
+        "shiftKey": "Ш",
+        "capsLock": "Ш"
       }
     },
     "KeyO": {
       "en": {
         "key": "o",
-        "shiftKey": "O"
+        "shiftKey": "O",
+        "capsLock": "O"
       },
       "ru": {
         "key": "щ",
-        "shiftKey": "Щ"
+        "shiftKey": "Щ",
+        "capsLock": "Щ"
       }
     },
     "KeyP": {
       "en": {
         "key": "p",
-        "shiftKey": "P"
+        "shiftKey": "P",
+        "capsLock": "P"
       },
       "ru": {
         "key": "з",
-        "shiftKey": "З"
+        "shiftKey": "З",
+        "capsLock": "З"
       }
     },
     "BracketLeft": {
@@ -434,7 +458,8 @@
       },
       "ru": {
         "key": "х",
-        "shiftKey": "Х"
+        "shiftKey": "Х",
+        "capsLock": "Х"
       }
     },
     "BracketRight": {
@@ -444,97 +469,116 @@
       },
       "ru": {
         "key": "ъ",
-        "shiftKey": "Ъ"
+        "shiftKey": "Ъ",
+        "capsLock": "Ъ"
       }
     },
     "KeyA": {
       "en": {
         "key": "a",
-        "shiftKey": "A"
+        "shiftKey": "A",
+        "capsLock": "A"
       },
       "ru": {
         "key": "ф",
-        "shiftKey": "Ф"
+        "shiftKey": "Ф",
+        "capsLock": "Ф"
       }
     },
     "KeyS": {
       "en": {
         "key": "s",
-        "shiftKey": "S"
+        "shiftKey": "S",
+        "capsLock": "S"
       },
       "ru": {
         "key": "ы",
-        "shiftKey": "Ы"
+        "shiftKey": "Ы",
+        "capsLock": "Ы"
       }
     },
     "KeyD": {
       "en": {
         "key": "d",
-        "shiftKey": "D"
+        "shiftKey": "D",
+        "capsLock": "D"
       },
       "ru": {
         "key": "в",
-        "shiftKey": "В"
+        "shiftKey": "В",
+        "capsLock": "В"
       }
     },
     "KeyF": {
       "en": {
         "key": "f",
-        "shiftKey": "F"
+        "shiftKey": "F",
+        "capsLock": "F"
       },
       "ru": {
         "key": "а",
-        "shiftKey": "А"
+        "shiftKey": "А",
+        "capsLock": "А"
       }
     },
     "KeyG": {
       "en": {
         "key": "g",
-        "shiftKey": "G"
+        "shiftKey": "G",
+        "capsLock": "G"
       },
       "ru": {
         "key": "п",
-        "shiftKey": "П"
+        "shiftKey": "П",
+        "capsLock": "П"
       }
     },
     "KeyH": {
       "en": {
         "key": "h",
-        "shiftKey": "H"
+        "shiftKey": "H",
+        "capsLock": "H"
       },
       "ru": {
         "key": "р",
-        "shiftKey": "Р"
+        "shiftKey": "Р",
+        "capsLock": "Р"
       }
     },
     "KeyJ": {
       "en": {
         "key": "j",
-        "shiftKey": "J"
+        "shiftKey": "J",
+        "capsLock": "J"
       },
       "ru": {
         "key": "о",
-        "shiftKey": "О"
+        "shiftKey": "О",
+        "capsLock": "О"
       }
     },
     "KeyK": {
       "en": {
         "key": "k",
-        "shiftKey": "K"
+        "shiftKey": "K",
+        "capsLock": "K"
       },
       "ru": {
         "key": "л",
-        "shiftKey": "Л"
+        "shiftKey": "Л",
+        "capsLock": "Л"
       }
     },
     "KeyL": {
       "en": {
         "key": "l",
-        "shiftKey": "L"
+        "shiftKey": "L",
+        "capsLock": "L"
       },
       "ru": {
         "key": "д",
-        "shiftKey": "Д"
+        "shiftKey": "Д",
+        "capsLock": "Д"
       }
     },
     "Semicolon": {
@@ -544,7 +588,8 @@
       },
       "ru": {
         "key": "ж",
-        "shiftKey": "Ж"
+        "shiftKey": "Ж",
+        "capsLock": "Ж"
       }
     },
     "Quote": {
@@ -554,7 +599,8 @@
       },
       "ru": {
         "key": "э",
-        "shiftKey": "Э"
+        "shiftKey": "Э",
+        "capsLock": "Э"
       }
     },
     "Backslash": {
@@ -564,77 +610,92 @@
       },
       "ru": {
         "key": "ё",
-        "shiftKey": "Ё"
+        "shiftKey": "Ё",
+        "capsLock": "Ё"
       }
     },
     "KeyZ": {
       "en": {
         "key": "z",
-        "shiftKey": "Z"
+        "shiftKey": "Z",
+        "capsLock": "Z"
       },
       "ru": {
         "key": "я",
-        "shiftKey": "Я"
+        "shiftKey": "Я",
+        "capsLock": "Я"
       }
     },
     "KeyX": {
       "en": {
         "key": "x",
-        "shiftKey": "X"
+        "shiftKey": "X",
+        "capsLock": "X"
       },
       "ru": {
         "key": "ч",
-        "shiftKey": "Ч"
+        "shiftKey": "Ч",
+        "capsLock": "Ч"
       }
     },
     "KeyC": {
       "en": {
         "key": "c",
-        "shiftKey": "C"
+        "shiftKey": "C",
+        "capsLock": "C"
       },
       "ru": {
         "key": "с",
-        "shiftKey": "С"
+        "shiftKey": "С",
+        "capsLock": "С"
       }
     },
     "KeyV": {
       "en": {
         "key": "v",
-        "shiftKey": "V"
+        "shiftKey": "V",
+        "capsLock": "V"
       },
       "ru": {
         "key": "м",
-        "shiftKey": "М"
+        "shiftKey": "М",
+        "capsLock": "М"
       }
     },
     "KeyB": {
       "en": {
         "key": "b",
-        "shiftKey": "B"
+        "shiftKey": "B",
+        "capsLock": "B"
       },
       "ru": {
         "key": "и",
-        "shiftKey": "И"
+        "shiftKey": "И",
+        "capsLock": "И"
       }
     },
     "KeyN": {
       "en": {
         "key": "n",
-        "shiftKey": "N"
+        "shiftKey": "N",
+        "capsLock": "N"
       },
       "ru": {
         "key": "т",
-        "shiftKey": "Т"
+        "shiftKey": "Т",
+        "capsLock": "Т"
       }
     },
     "KeyM": {
       "en": {
         "key": "m",
-        "shiftKey": "M"
+        "shiftKey": "M",
+        "capsLock": "M"
       },
       "ru": {
         "key": "ь",
-        "shiftKey": "Ь"
+        "shiftKey": "Ь",
+        "capsLock": "Ь"
       }
     },
     "Comma": {
@@ -644,7 +705,8 @@
       },
       "ru": {
         "key": "б",
-        "shiftKey": "Б"
+        "shiftKey": "Б",
+        "capsLock": "Б"
       }
     },
     "Period": {
@@ -654,7 +716,8 @@
       },
       "ru": {
         "key": "ю",
-        "shiftKey": "Ю"
+        "shiftKey": "Ю",
+        "capsLock": "Ю"
       }
     }
   }

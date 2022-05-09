@@ -131,7 +131,7 @@ class Keyboard {
   }
 
   toggleActiveClass(code, toggler) {
-    if (!this.keyComponentsByCode[code]) return;
+    // if (!this.keyComponentsByCode[code]) return;
 
     const isActive = code === 'CapsLock' ? this.state.capslock : toggler;
 
@@ -158,6 +158,13 @@ class Keyboard {
     if (this.state.leftShift || this.state.rightShift) {
       this.shiftDependentKeyComponents.forEach((item) => {
         item.showShiftValues();
+      });
+    } else if (this.state.capslock) {
+      this.shiftDependentKeyComponents.forEach((item) => {
+        item.hideShiftValues();
+      });
+      this.capsLockDependentKeyComponents.forEach((item) => {
+        item.showCapsValues();
       });
     } else {
       this.shiftDependentKeyComponents.forEach((item) => {
