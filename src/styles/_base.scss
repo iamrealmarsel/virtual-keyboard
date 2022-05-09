@@ -1,9 +1,21 @@
+@use './constants' as c;
+
 body {
-  background-color: azure;
+  min-width: 1000px;
+  min-height: 600px;
+  background-color: #264653;
+  background-image: url(../../public/img/noise.png),
+    radial-gradient(100% 215.42% at 0% 0%, c.$bg_clr_1 0%, c.$bg_clr_2 100%);
+  background-position: 50% 50%;
+  font-family: 'Verdana', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
 }
 
 main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  height: 100%;
+  padding: 30px 15px;
 }

@@ -1,6 +1,13 @@
 import Keyboard from './components/Keyboard';
 import Output from './components/Output';
 import keysData from './keys.json';
+import { createElement } from './utils';
+
+const makeInfoHtml = () =>
+  `<div class="info">
+  <p>Клавиатура создана и протестирована в операционной системе macOs.</p>
+  <p>Для переключения языка используйте комбинацию клавиш:<br> левыe control + option (ctrl + alt на windows).</p>
+  </div>`;
 
 class App {
   constructor(containerElement) {
@@ -38,6 +45,7 @@ class App {
 
     this.mainElement.append(this.outputComponent.element);
     this.mainElement.append(this.keyboardComponent.element);
+    this.mainElement.append(createElement(makeInfoHtml()));
   }
 
   mousedownHandler(e) {
@@ -119,27 +127,6 @@ class App {
     this.outputComponent.setState(this.state);
     this.outputComponent.update(codeKey);
     this.keyboardComponent.toggleActiveClass(codeKey, true);
-
-    // if (
-    //   e.shiftKey &&
-    //   (codeKey === 'ArrowLeft' ||
-    //     codeKey === 'ArrowRight' ||
-    //     codeKey === 'ArrowUp' ||
-    //     codeKey === 'ArrowDown')
-    // ) {
-    //   this.outputComponent.select(codeKey);
-    // }
-
-    // if (
-    //   !(codeKey === 'ShiftLeft') &&
-    //   !(codeKey === 'ShiftRight') &&
-    //   !(codeKey === 'CapsLock') &&
-    //   !e.ctrlKey &&
-    //   !e.altKey &&
-    //   !e.metaKey
-    // ) {
-    //   this.outputComponent.update(codeKey);
-    // }
   }
 
   keyupHandler(e) {

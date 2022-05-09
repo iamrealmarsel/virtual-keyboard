@@ -41,7 +41,6 @@ class Output {
   }
 
   navigate(code) {
-    // ЕСЛИ ТЕКСТ НЕ ВЫДЕЛЕН
     if (this.element.selectionStart === this.element.selectionEnd) {
       if (code === 'ArrowLeft' && this.element.selectionStart !== 0) {
         this.element.selectionStart -= 1;
@@ -56,7 +55,6 @@ class Output {
         this.element.selectionStart = this.element.textLength;
         this.element.selectionEnd = this.element.textLength;
       }
-      // ТЕКСТ ВЫДЕЛЕН
     } else if (code === 'ArrowLeft') {
       this.element.selectionEnd = this.element.selectionStart;
     } else if (code === 'ArrowRight') {
@@ -83,9 +81,7 @@ class Output {
       property = 'key';
     }
 
-    // ЕСЛИ ТЕКСТ НЕ ВЫДЕЛЕН
     if (this.element.selectionStart === this.element.selectionEnd) {
-      // добавляем символ в любое место
       this.text =
         this.text.slice(0, this.element.selectionStart) +
         this.keys[code][this.state.lang][property] +
@@ -94,7 +90,6 @@ class Output {
       const selectionPosition = this.element.selectionStart;
       this.element.value = this.text;
       this.element.selectionEnd = selectionPosition + 1;
-      // ЕСЛИ ТЕКСТ ВЫДЕЛЕН
     } else {
       const selectionPosition = this.element.selectionStart;
       this.element.setRangeText(this.keys[code][this.state.lang][property]);
@@ -105,9 +100,7 @@ class Output {
   }
 
   remove(code) {
-    // ЕСЛИ ТЕКСТ НЕ ВЫДЕЛЕН
     if (this.element.selectionStart === this.element.selectionEnd) {
-      // удаляем справа и слева в любом месте
       if (code === 'Backspace' && this.element.selectionStart !== 0) {
         this.text =
           this.text.slice(0, this.element.selectionStart - 1) +
@@ -125,7 +118,6 @@ class Output {
         this.element.value = this.text;
         this.element.selectionEnd = selectionPosition;
       }
-      // ЕСЛИ ТЕКСТ ВЫДЕЛЕН
     } else {
       this.element.setRangeText('');
       this.text = this.element.value;

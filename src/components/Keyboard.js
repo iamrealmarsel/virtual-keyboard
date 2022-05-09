@@ -44,7 +44,6 @@ class Keyboard {
     ];
 
     this.capsLockDependentKeyComponents = [...Object.values(this.keyComponents.letterKeys)];
-    // this.capsLockRuDependentKeyComponents = [...Object.values(this.keyComponents.letterKeys)];
 
     this.element = this.generateElement();
   }
