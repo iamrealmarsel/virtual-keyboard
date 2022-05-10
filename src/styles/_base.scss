@@ -3,12 +3,14 @@
 body {
   min-width: 1000px;
   min-height: 600px;
-  background-color: #264653;
+  color: c.$bg_clr_2;
+  background-color: c.$bg_clr_1;
   background-image: url(../../public/img/noise.png),
     radial-gradient(100% 215.42% at 0% 0%, c.$bg_clr_1 0%, c.$bg_clr_2 100%);
   background-position: 50% 50%;
   font-family: 'Verdana', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
+  font-style: 16px;
 }
 
 main {

@@ -43,7 +43,10 @@ class App {
     this.keyboardElement.addEventListener('mousedown', this.mousedownHandler.bind(this));
     this.keyboardElement.addEventListener('mouseup', this.mouseupHandler.bind(this));
 
-    this.mainElement.append(this.outputComponent.element);
+    const outputElement = createElement(`<div class="output"></div>`);
+    outputElement.append(this.outputComponent.element);
+
+    this.mainElement.append(outputElement);
     this.mainElement.append(this.keyboardComponent.element);
     this.mainElement.append(createElement(makeInfoHtml()));
   }

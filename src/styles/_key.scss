@@ -8,16 +8,17 @@
   width: 52px;
   border-radius: 4px;
   background-color: #f3f4f8;
+  box-shadow: 0 3px 3px 0 #26465340;
   cursor: pointer;
-  transition: 0.3s box-shadow, 0.3s background-color;
+  transition: 0.3s box-shadow, 0.3s transform;
 
   &:hover {
-    background-color: #ebedf5;
+    transform: rotate(5deg);
   }
 
   &._active {
-    box-shadow: 10px 1px 10px 5px #a767e5, 0 5px 8px 11px #4fcf70, 0 -5px 8px 11px #fad648,
-      0px 5px 8px 11px #12bcfe;
+    box-shadow: 10px -5px 15px 6px #a767e5, -10px 5px 15px 6px #fad648, 5px 10px 15px 6px #4fcf70,
+      -5px -10px 15px 6px #12bcfe;
     z-index: 5;
   }
 }
@@ -41,6 +42,14 @@
 .arrowup,
 .arrowdown {
   height: auto;
+  flex-grow: 1;
+}
+
+.arrowup,
+.arrowdown,
+.arrowright,
+.arrowleft {
+  font-size: 12px;
 }
 
 .enter {

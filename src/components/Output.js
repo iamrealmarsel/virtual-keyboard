@@ -1,6 +1,6 @@
 import { createElement } from '../utils';
 
-const makeHtml = () => `<textarea class="output"></textarea>`;
+const makeHtml = () => `<textarea class="output__field"></textarea>`;
 
 class Output {
   constructor({ symbolKeys, digitKeys, letterKeys }) {
