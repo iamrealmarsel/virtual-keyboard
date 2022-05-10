@@ -6,7 +6,7 @@ import { createElement } from './utils';
 const makeInfoHtml = () =>
   `<div class="info">
   <p>Клавиатура создана и протестирована в операционной системе macOs.</p>
-  <p>Для переключения языка используйте комбинацию клавиш:<br> левыe control + option (ctrl + alt на windows).</p>
+  <p>Для переключения языка используйте комбинацию клавиш:<br> control + option (ctrl + alt на windows).</p>
   </div>`;
 
 class App {
@@ -116,7 +116,6 @@ class App {
 
       this.keyboardComponent.toggleShift();
     } else if (e.ctrlKey && e.altKey) {
-      // ... смена языка ...
       this.state.lang = this.state.lang === 'en' ? 'ru' : 'en';
       localStorage.setItem('lang', this.state.lang);
       this.keyboardComponent.setState(this.state);

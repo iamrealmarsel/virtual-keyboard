@@ -22,12 +22,7 @@ class Keyboard {
       ...Object.values(this.keyComponents.letterKeys),
       ...Object.values(this.keyComponents.digitKeys),
       ...Object.values(this.keyComponents.symbolKeys),
-      ...Object.values(this.keyComponents.metaKeys).filter(
-        (item) =>
-          item.keyCode !== 'CapsLock' &&
-          item.keyCode !== 'ShiftLeft' &&
-          item.keyCode !== 'ShiftRight'
-      ),
+      ...Object.values(this.keyComponents.metaKeys).filter((item) => item.keyCode !== 'CapsLock'),
     ];
 
     this.keyComponentsByCode = {
@@ -147,10 +142,12 @@ class Keyboard {
   toggleActiveClass(code, toggler) {
     if (code === 'all') {
       this.keyArrComponents.forEach((item) => item.removeActiveClass());
+      console.log(111);
       return;
     }
 
     const isActive = code === 'CapsLock' ? this.state.capslock : toggler;
+    console.log(222);
 
     if (isActive) {
       this.keyComponentsByCode[code].addActiveClass();
