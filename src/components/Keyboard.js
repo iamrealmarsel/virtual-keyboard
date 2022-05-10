@@ -142,12 +142,10 @@ class Keyboard {
   toggleActiveClass(code, toggler) {
     if (code === 'all') {
       this.keyArrComponents.forEach((item) => item.removeActiveClass());
-      console.log(111);
       return;
     }
 
     const isActive = code === 'CapsLock' ? this.state.capslock : toggler;
-    console.log(222);
 
     if (isActive) {
       this.keyComponentsByCode[code].addActiveClass();
