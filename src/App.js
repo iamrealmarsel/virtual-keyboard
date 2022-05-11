@@ -104,7 +104,7 @@ class App {
     if (!this.keyByCode[codeKey]) return;
 
     if (codeKey === 'CapsLock') {
-      this.state.capslock = e.getModifierState('CapsLock');
+      this.state.capslock = !this.state.capslock;
       this.keyboardComponent.setState(this.state);
 
       this.keyboardComponent.toggleCapsLock();
@@ -138,12 +138,7 @@ class App {
 
     if (!this.keyByCode[codeKey]) return;
 
-    if (codeKey === 'CapsLock') {
-      this.state.capslock = e.getModifierState('CapsLock');
-      this.keyboardComponent.setState(this.state);
-
-      this.keyboardComponent.toggleCapsLock();
-    } else if (codeKey === 'ShiftLeft') {
+    if (codeKey === 'ShiftLeft') {
       this.state.leftShift = false;
       this.keyboardComponent.setState(this.state);
 
