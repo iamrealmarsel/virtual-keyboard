@@ -1,0 +1,36 @@
+@use './constants' as c;
+
+:root {
+  --rainbow_1: #ff0000ff;
+  --rainbow_2: #ff8700ff;
+  --rainbow_3: #ffd300ff;
+  --rainbow_4: #deff0aff;
+  --rainbow_5: #a1ff0aff;
+  --rainbow_6: #0aff99ff;
+  --rainbow_7: #0aefffff;
+  --rainbow_8: #147df5ff;
+  --rainbow_9: #580affff;
+  --rainbow_10: #be0affff;
+}
+
+body {
+  min-width: 1000px;
+  min-height: 600px;
+  color: c.$bg_clr_2;
+  background-color: c.$bg_clr_1;
+  background-image: url(../../public/img/noise.png),
+    radial-gradient(100% 215.42% at 0% 0%, c.$bg_clr_1 0%, c.$bg_clr_2 100%);
+  background-position: 50% 50%;
+  font-family: 'Verdana', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 30px 15px;
+}
