@@ -3,11 +3,24 @@ import Output from './components/Output';
 import keysData from './keys.json';
 import { createElement } from './utils';
 
-const makeInfoHtml = () =>
-  `<div class="info">
-  <p>Клавиатура создана и протестирована в операционной системе macOs.</p>
-  <p>Для переключения языка используйте комбинацию клавиш:<br> control + option (ctrl + alt на windows).</p>
-  </div>`;
+const makeInfoHtml = () => `
+<div class="info">
+  <div class="tumbler">
+    <ul class="tumbler__lines"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+    <div  class="tumbler__shadow"></div>
+    <div  class="tumbler__knob"></div>
+  </div>
+  <div class="info__text">
+    <p>Клавиатура создана и протестирована в операционной системе macOs.</p>
+    <p>
+      Для переключения языка используйте комбинацию клавиш:<br />
+      control + option (ctrl + alt на windows).
+    </p>
+  </div>
+  <div class="info__lang">
+  </div>
+</div>
+`;
 
 class App {
   constructor(containerElement) {
@@ -46,9 +59,28 @@ class App {
     const outputElement = createElement(`<div class="output"></div>`);
     outputElement.append(this.outputComponent.element);
 
+    this.infoElement = createElement(makeInfoHtml());
+
+    this.infoLangElement = this.infoElement.querySelector('.info__lang');
+    this.toggleInfoLang();
+
+    this.tumblerElement = this.infoElement.querySelector('.tumbler');
+    this.tumblerKnobElement = this.infoElement.querySelector('.tumbler__knob');
+    this.tumblerKnobElement.addEventListener('click', () => {
+      this.tumblerElement.classList.toggle('_active');
+      this.keyboardElement.classList.toggle('_colorful');
+    });
+
     this.mainElement.append(outputElement);
     this.mainElement.append(this.keyboardComponent.element);
-    this.mainElement.append(createElement(makeInfoHtml()));
+    this.mainElement.append(this.infoElement);
+  }
+
+  toggleInfoLang() {
+    this.infoLangElement.innerHTML = `
+    <span>${this.state.lang.toUpperCase()}</span>
+    <span>${this.state.lang === 'en' ? '🇺🇸' : '🇷🇺'}</span>
+    `;
   }
 
   mousedownHandler(e) {
@@ -124,6 +156,7 @@ class App {
       this.keyboardComponent.setState(this.state);
 
       this.keyboardComponent.toggleLang();
+      this.toggleInfoLang();
     }
 
     this.outputComponent.setState(this.state);

@@ -10,15 +10,17 @@
   background-color: #f3f4f8;
   box-shadow: 0 3px 3px 0 #26465340;
   cursor: pointer;
-  transition: 0.3s box-shadow, 0.3s transform;
+  transition: 0.2s box-shadow, 0.2s transform, 0.2s color;
 
   &:hover {
     transform: rotate(5deg);
   }
 
   &._active {
-    box-shadow: 10px -5px 15px 6px #a767e5, -10px 5px 15px 6px #fad648, 5px 10px 15px 6px #4fcf70,
-      -5px -10px 15px 6px #12bcfe;
+    transform: scale(0.9);
+    color: #5ed4c6;
+    box-shadow: 2px -2px 0 0 #a767e5, -2px 2px 0 0 #fad648, 15px -10px 20px 6px #a767e5,
+      -15px 10px 20px 6px #fad648, 10px 15px 20px 6px #4fcf70, -10px -15px 20px 6px #12bcfe;
     z-index: 5;
   }
 }
