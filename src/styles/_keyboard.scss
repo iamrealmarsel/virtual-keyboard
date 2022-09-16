@@ -1,0 +1,178 @@
+@use './constants' as c;
+
+.keyboard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 100%;
+  max-width: 900px;
+  padding: 10px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  background-color: #c0c1c3;
+  overflow: hidden;
+  transition: 1s background-color ease-in-out;
+
+  &._colorful {
+    background-color: transparent;
+  }
+
+  &::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-image: linear-gradient(92deg, c.$clr_1, c.$clr_2, c.$clr_3, c.$clr_4, c.$clr_5);
+    background-size: 50% 100%;
+    animation: textareaGradient 2s infinite linear;
+  }
+
+  &__keys {
+    display: flex;
+    row-gap: 10px;
+    column-gap: 10px;
+
+    &_col:nth-child(1) {
+      flex-direction: column;
+      flex-grow: 1;
+    }
+  }
+
+  &__arrowKeys {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 5px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  color: #f3f4f8;
+
+  &__lang {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 56px;
+    width: 56px;
+    border-radius: 12px;
+    box-shadow: #0c302d 3.6px 3.6px 7.2px 0px, #24897f -2.4px -2.4px 6px 0px;
+  }
+}
+
+.tumbler {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  width: 56px;
+  border-radius: 12px;
+  background-color: #c0c1c3;
+
+  &._active {
+    .tumbler__lines {
+      @for $i from 1 to 11 {
+        li:nth-child(#{$i}) {
+          &::before {
+            transition: 0s background-color linear #{$i/20}s;
+            background-color: var(--rainbow_#{$i});
+          }
+        }
+      }
+    }
+
+    .tumbler__knob {
+      transform: rotate(360deg);
+    }
+  }
+
+  &__lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+
+    li {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      list-style: none;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 6px;
+        border-radius: 50px;
+      }
+    }
+
+    @for $i from 1 to 11 {
+      li:nth-child(#{$i}) {
+        transform: rotate(#{$i * 36}deg);
+      }
+    }
+
+    @for $i from 1 to 11 {
+      li:nth-child(#{11 - $i}) {
+        &::before {
+          transition: 0s background-color linear #{$i/20 - 0.05}s;
+          background-color: #f3f4f8;
+        }
+      }
+    }
+  }
+
+  &__shadow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    box-shadow: 0 3px 3px 0 #26465340;
+  }
+
+  &__knob {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: #f3f4f8;
+    cursor: pointer;
+    transition: transform 0.5s linear;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 6px;
+      border-radius: 50px;
+      background-color: #144c46;
+    }
+  }
+}
