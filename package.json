@@ -14,8 +14,11 @@
     "type": "git",
     "url": "git+https://github.com/iamrealmarsel/virtual-keyboard.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "virtual-keyboard",
+    "rsschool"
+  ],
+  "author": "Marsel",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/iamrealmarsel/virtual-keyboard/issues"
