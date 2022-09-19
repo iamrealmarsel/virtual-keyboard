@@ -6,15 +6,17 @@ import { createElement } from './utils';
 const makeInfoHtml = () => `
 <div class="info">
   <div class="tumbler">
-    <ul class="tumbler__lines"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+    <ul class="tumbler__lines">
+      <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+    </ul>
     <div  class="tumbler__shadow"></div>
     <div  class="tumbler__knob"></div>
   </div>
   <div class="info__text">
-    <p>Клавиатура создана и протестирована в операционной системе macOs.</p>
+    <p>The keyboard was created and tested in the macOS.</p>
     <p>
-      Для переключения языка используйте комбинацию клавиш:<br />
-      control + option (ctrl + alt на windows).
+      To switch the language use the key combination:<br />
+      control + option (ctrl + alt on windows).
     </p>
   </div>
   <div class="info__lang">
