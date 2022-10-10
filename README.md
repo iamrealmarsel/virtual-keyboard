@@ -16,7 +16,7 @@ Bilingual virtual keyboard with typed text output
 
 ## Functional requirements:
 
-Example:
+Example:  
 ![reference](https://user-images.githubusercontent.com/20097612/194788982-4c6e519f-7abb-4f99-ac3f-8b1314512a46.png)
 
 - design is at your discretion.
